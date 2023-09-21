@@ -68,13 +68,18 @@ class BERTClassifier(nn.Module):
 print("2")
 
 bertmodel = BertModel.from_pretrained('skt/kobert-base-v1', return_dict=False)
+print("2")
 tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1')
+print("2")
 vocab = nlp.vocab.BERTVocab.from_sentencepiece(tokenizer.vocab_file, padding_token="[PAD]")
+print("2")
 
 device = torch.device("cpu")
 model = BERTClassifier(bertmodel, dr_rate=0.5).to(device)
+print("2")
 
 model.load_state_dict(torch.load("./model.pt"))
+print("2")
 
 tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1', return_dict=False)
 tok = tokenizer.tokenize
