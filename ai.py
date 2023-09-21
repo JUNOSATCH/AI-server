@@ -18,6 +18,8 @@ from transformers import BertModel
 from kobert_tokenizer import KoBERTTokenizer
 
 
+print("0")
+
 class BERTDataset(Dataset):
     def __init__(self, dataset, sent_idx, label_idx, bert_tokenizer, vocab, max_len,
                  pad, pair):
@@ -32,6 +34,8 @@ class BERTDataset(Dataset):
 
     def __len__(self):
         return (len(self.labels))
+    
+print("1")
     
 class BERTClassifier(nn.Module):
     def __init__(self,
@@ -61,6 +65,7 @@ class BERTClassifier(nn.Module):
             out = self.dropout(pooler)
         return self.classifier(out)
 
+print("2")
 
 bertmodel = BertModel.from_pretrained('skt/kobert-base-v1', return_dict=False)
 tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1')
@@ -73,6 +78,8 @@ model.load_state_dict(torch.load("./model.pt"))
 
 tokenizer = KoBERTTokenizer.from_pretrained('skt/kobert-base-v1', return_dict=False)
 tok = tokenizer.tokenize
+
+print('3')
 
 def predict(predict_sentence):
 
@@ -118,10 +125,11 @@ def predict(predict_sentence):
 
         print(">> 입력하신 내용에서 " + test_eval[0] + " 이/가 느껴집니다.")
 
+print("4")
 
 end = 1
 while end == 1 :
-    sentence = input("하고싶은 말을 입력해주세요 : ")
+    sentence = input("input : ")
     if sentence == "0": break
     predict(sentence)
     print("\n")
