@@ -1,0 +1,9 @@
+--find-links https://download.pytorch.org/whl/cpu
+numpy==1.23.5
+torch
+urllib3==1.26.6
+sentencepiece==0.1.96
+wheel
+mxnet
+gluonnlp
+transformers
